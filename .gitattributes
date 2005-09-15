@@ -1,0 +1,13 @@
+* text=auto !eol
+doc/manual.sxw -text
+doc/wizard_form.dat -text
+doc/wizard_form.html -text
+/ext_emconf.php -text
+/ext_icon.gif -text
+/ext_localconf.php -text
+/ext_php_api.dat -text
+/ext_tables.php -text
+/ext_typoscript_constants.txt -text
+/ext_typoscript_setup.txt -text
+/locallang_db.php -text
+pi1/class.tx_mwkeywordlist_pi1.php -text
