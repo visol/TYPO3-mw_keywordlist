@@ -8,7 +8,7 @@
  * @author		mehrwert <typo3@mehrwert.de>
  * @license		GPL
  */
- 
+
 if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
