@@ -26,19 +26,19 @@
  *
  *
  *
- *   58: class tx_mwkeywordlist_pi1 extends tslib_pibase
+ *   60: class tx_mwkeywordlist_pi1 extends tslib_pibase
  *
  *              SECTION: Main control and dispatcher functions
- *  157:     function getRecursivePagelist($uid, $maxlevels = 3, $level = 0, $enableFields, $sys_language_uid = 0)
- *  283:     function main($content, $conf)
- *  292:     function mw_arraySort(&$value, $key)
+ *  170:     function getRecursivePagelist($uid, $maxlevels = 3, $level = 0, $enableFields, $sys_language_uid = 0)
+ *  296:     function main($content, $conf)
+ *  305:     function mw_arraySort(&$value, $key)
  *
  *              SECTION: Various helper functions
- *  446:     function simplifyString($str)
- *  480:     function renderJumpMenu()
- *  513:     function microtimeFloat()
- *  526:     function setContentPageTypes()
- *  544:     function setContentPageTypesWhereClause()
+ *  459:     function simplifyString($str)
+ *  493:     function renderJumpMenu()
+ *  526:     function microtimeFloat()
+ *  539:     function setContentPageTypes()
+ *  557:     function setContentPageTypesWhereClause()
  *
  * TOTAL FUNCTIONS: 8
  * (This index is automatically created/updated by the extension "extdeveval")
@@ -296,13 +296,13 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 	function main($content, $conf) {
 
 		/**
-		 * Callback function for sorting
-		 *
-		 * @param	string		$value of the array
-		 * @param	array		$key of the array
-		 * @return	void
-		 */
-			function mw_arraySort(&$value, $key) {
+ * Callback function for sorting
+ *
+ * @param	string		$value of the array
+ * @param	array		$key of the array
+ * @return	void
+ */
+		function mw_arraySort(&$value, $key) {
 			ksort($value);
 		}
 
