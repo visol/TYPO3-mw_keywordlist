@@ -5,8 +5,9 @@
  *
  * This file is detected by the translation tool.
  *
- * @version		$Rev$
- * @id			$Id$
+ * @package		TYPO3
+ * @subpackage	tx_mwkeywordlist
+ * @version		$Id$
  * @author		mehrwert <typo3@mehrwert.de>
  * @license		GPL
  */
@@ -102,4 +103,5 @@ $LOCAL_LANG = Array (
 	'hi' => Array (
 	),
 );
+
 ?>

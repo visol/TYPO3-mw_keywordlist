@@ -1,2 +1,9 @@
-
+### Setup description for extension mw_keywordlist
+#
+# @package		TYPO3
+# @subpackage	tx_mwkeywordlist
+# @version		$Id$
+# @author		mehrwert <typo3@mehrwert.de>
+# @license		GPL
+#
 # Here goes the CONSTANTS code
