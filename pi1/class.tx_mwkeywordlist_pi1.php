@@ -296,12 +296,12 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 	function main($content, $conf) {
 
 		/**
- * Callback function for sorting
- *
- * @param	string		$value of the array
- * @param	array		$key of the array
- * @return	void
- */
+ 		 * Callback function for sorting
+		 *
+		 * @param	string		$value of the array
+		 * @param	array		$key of the array
+		 * @return	void
+		 */
 		function mw_arraySort(&$value, $key) {
 			ksort($value);
 		}
