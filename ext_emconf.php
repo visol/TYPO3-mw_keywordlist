@@ -3,7 +3,7 @@
 ########################################################################
 # Extension Manager/Repository config file for ext: "mw_keywordlist"
 #
-# Auto generated 14-02-2008 00:06
+# Auto generated 02-11-2008 10:39
 #
 # Manual updates:
 # Only the data in the array - anything else is removed by next write.
@@ -11,7 +11,7 @@
 ########################################################################
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'mehrwert A-Z Keyword List',
+	'title' => 'A-Z Keyword List',
 	'description' => 'Extracts all keywords from the page\'s keyword field and displays a list of keywords and links the page title to the keyword related page.',
 	'category' => 'plugin',
 	'shy' => 0,
@@ -29,20 +29,20 @@ $EM_CONF[$_EXTKEY] = array(
 	'lockType' => '',
 	'author' => 'mehrwert',
 	'author_email' => 'typo3@mehrwert.de',
-	'author_company' => 'mehrwert',
+	'author_company' => 'mehrwert intermediale kommunikation GmbH',
 	'CGLcompliance' => '',
 	'CGLcompliance_note' => '',
 	'constraints' => array(
 		'depends' => array(
-			'php' => '4.0.12-5.3.0',
-			'typo3' => '3.6.0-4.2.0',
+			'php' => '4.0.12-5.2.99',
+			'typo3' => '3.6.0-4.2.99',
 		),
 		'conflicts' => array(
 		),
 		'suggests' => array(
 		),
 	),
-	'_md5_values_when_last_written' => 'a:11:{s:12:"ext_icon.gif";s:4:"b92c";s:17:"ext_localconf.php";s:4:"b932";s:15:"ext_php_api.dat";s:4:"520c";s:14:"ext_tables.php";s:4:"e356";s:28:"ext_typoscript_constants.txt";s:4:"c710";s:24:"ext_typoscript_setup.txt";s:4:"fd28";s:16:"locallang_db.php";s:4:"abb1";s:14:"doc/manual.sxw";s:4:"894d";s:19:"doc/wizard_form.dat";s:4:"aa97";s:20:"doc/wizard_form.html";s:4:"24a4";s:34:"pi1/class.tx_mwkeywordlist_pi1.php";s:4:"cd96";}',
+	'_md5_values_when_last_written' => 'a:11:{s:12:"ext_icon.gif";s:4:"b92c";s:17:"ext_localconf.php";s:4:"b932";s:15:"ext_php_api.dat";s:4:"520c";s:14:"ext_tables.php";s:4:"e356";s:28:"ext_typoscript_constants.txt";s:4:"c710";s:24:"ext_typoscript_setup.txt";s:4:"fd28";s:16:"locallang_db.php";s:4:"abb1";s:14:"doc/manual.sxw";s:4:"f6d3";s:19:"doc/wizard_form.dat";s:4:"aa97";s:20:"doc/wizard_form.html";s:4:"24a4";s:34:"pi1/class.tx_mwkeywordlist_pi1.php";s:4:"0862";}',
 	'suggests' => array(
 	),
 );
