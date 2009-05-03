@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2004-2008 mehrwert (typo3@mehrwert.de)
+*  (c) 2004-2009 mehrwert (typo3@mehrwert.de)
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -30,15 +30,15 @@
  *
  *              SECTION: Main control and dispatcher functions
  *  170:     function getRecursivePagelist($uid, $maxlevels = 3, $level = 0, $enableFields, $sys_language_uid = 0)
- *  296:     function main($content, $conf)
- *  305:     function mw_arraySort(&$value, $key)
+ *  295:     function main($content, $conf)
+ *  304:     function mw_arraySort(&$value, $key)
  *
  *              SECTION: Various helper functions
- *  459:     function simplifyString($str)
- *  493:     function renderJumpMenu()
- *  526:     function microtimeFloat()
- *  539:     function setContentPageTypes()
- *  557:     function setContentPageTypesWhereClause()
+ *  463:     function simplifyString($str)
+ *  496:     function renderJumpMenu()
+ *  529:     function microtimeFloat()
+ *  542:     function setContentPageTypes()
+ *  560:     function setContentPageTypesWhereClause()
  *
  * TOTAL FUNCTIONS: 8
  * (This index is automatically created/updated by the extension "extdeveval")
@@ -48,8 +48,8 @@
 @require_once (PATH_tslib.'class.tslib_pibase.php');
 
 /**
- * Plugin 'A-Z keyword list with pages linked for the 'mw_keywordlist' extension.
- * Provides facilities to retriev keywords from the pages and generate a link list
+ * Plugin A-Z keyword list with pages linked for the 'mw_keywordlist' extension.
+ * Provides facilities to retrieve keywords from the pages and generate a link list
  *
  * @package		TYPO3
  * @subpackage	tx_mwkeywordlist
@@ -188,8 +188,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 
 			$from_table		= 'pages AS pages
 							   LEFT JOIN pages_language_overlay AS plo ON pages.uid=plo.pid AND plo.sys_language_uid = '. $sys_language_uid;
-		}
-		else {
+		} else {
 			$select_fields	= '	uid,
 								pid,
 								title,
@@ -204,8 +203,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 		// at top level (website root, pid = 0). Query for the pid of the pages table
 		if ($uid == 0) {
 			$where_clause	= 'pages.pid = ' . $uid . $enableFields;
-		}
-		else {
+		} else {
 			$where_clause	= ($level == 0) ? 'pages.uid IN (' . $uid . ')' . $enableFields : 'pages.pid = ' . $uid . $enableFields;
 		}
 		// Do not add doktypes to the query if querying the website root, pid = 0
@@ -215,10 +213,13 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 		$orderBy		= 'sorting';
 		$limit			= '';
 
+		// If SQL query succeeds, proceed
 		if ($result = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit)) {
 
+			// If the query returns at least on row, proceed
 			if ($GLOBALS['TYPO3_DB']->sql_num_rows($result) > 0) {
 
+				// For each results row process results
 				while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($result)) {
 
 					// Store the original values for
@@ -258,11 +259,10 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 							//$row['uid'] = $originalRow['page_uid'];
 							$this->getRecursivePagelist($row['uid'], $maxlevels, ($level + 1), $enableFields, $sys_language_uid);
 						}
-					}
-					// If the result of the version overlay check was negative
-					// e.g. no result row from sys_page->versionOL(), restore
-					// the original row values
-					else {
+					} else {
+						// If the result of the version overlay check was negative
+						// e.g. no result row from sys_page->versionOL(), restore
+						// the original row values
 
 						$row = array();
 
@@ -271,8 +271,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 						// UID of the page in the default sys language
 						if ($sys_language_uid != 0) {
 							$row['uid'] = $originalRow['page_uid'];
-						}
-						else {
+						} else {
 							$row['uid'] = $originalRow['uid'];
 						}
 
@@ -296,14 +295,14 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 	function main($content, $conf) {
 
 		/**
- 		 * Callback function for sorting
+		 * Callback function for sorting
 		 *
 		 * @param	string		$value of the array
 		 * @param	array		$key of the array
 		 * @return	void
 		 */
 		function mw_arraySort(&$value, $key) {
-			ksort($value);
+			@ksort($value);
 		}
 
 		// get settings for levels, defaults to 4 if not set
@@ -325,8 +324,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 		// Currently disabled!
 		if (t3lib_div::int_from_ver(TYPO3_version) > 4000000) {
 			$this->enableWorkspaces = false;
-		}
-		else {
+		} else {
 			$this->enableWorkspaces = false;
 		}
 
@@ -342,11 +340,16 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 		// get the page list
 		$this->pages = $this->getRecursivePagelist($pageUidList, $levels, '', $this->cObj->enableFields('pages'), $GLOBALS['TSFE']->sys_page->sys_language_uid);
 
+		// Only proceed if pages is an array and contains more than one entry
 		if (is_array($this->pages) && sizeof($this->pages) > 1) {
 
-			// loop through all selected pages
+			// Create array
+			$index = array();
+
+			// Set the pointer to first element
 			reset($this->pages);
 
+			// loop through all selected pages
 			while (list($uid, $pages_row) = each ($this->pages)) {
 				$keywords = preg_split('/[\s]*,[\s]*/', $pages_row['keywords'], -1, PREG_SPLIT_NO_EMPTY);
 				if (sizeof($keywords) > 0) {
@@ -356,8 +359,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 						if (in_array($key, $this->jumpMenuIndexKeys)) {
 							$index[$key][$simplifiedKeyword][$pages_row['title']] = $uid;
 							$originalKeywords[$simplifiedKeyword] = $keyword;
-						}
-						else {
+						} else {
 							$index['0-9'][$simplifiedKeyword][$pages_row['title']] = $uid;
 							$originalKeywords[$simplifiedKeyword] = $keyword;
 						}
@@ -365,7 +367,8 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 				}
 			}
 
-			ksort($index);
+			// Sort the index
+			@ksort($index);
 
 			// Sort array, first level
 			array_walk($index, mw_arraySort);
@@ -436,6 +439,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 			}
 		}
 
+		// Concat the jumpmenu and the content (the keywordlist)
 		$content = $this->renderJumpMenu() . $this->cObj->wrap($content, $conf['contentWrap']);
 
 		// wrap final output and return
@@ -458,10 +462,10 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 	 */
 	function simplifyString($str) {
 
+		// Charset detection
 		if (isset($GLOBALS['TSFE']->renderCharset) && $GLOBALS['TSFE']->renderCharset != '') {
 			$charset = $GLOBALS['TSFE']->renderCharset;
-		}
-		else {
+		} else {
 			$charset = 'iso-8859-1';
 		}
 
@@ -473,8 +477,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 			// Convert special chars using old method
 			$str = t3lib_div::convUmlauts($str);
 			$str = strtolower($str);
-		}
-		else {
+		} else {
 			// Convert special chars using csConvObj
 			$str = $GLOBALS['TSFE']->csConvObj->conv_case($charset, $str, 'toLower');
 			$str = $GLOBALS['TSFE']->csConvObj->specCharsToASCII($charset, $str);
