@@ -36,6 +36,10 @@ plugin.tx_mwkeywordlist_pi1 {
 
   bullet =
   levels = 5
+  
+  excludeNotInMenu = 0
+  # Define field that is taken as link text. May be subtitle, nav_title or title. TypoScript getData property
+  linktext = field:nav_title // field:title
 
   _CSS_DEFAULT_STYLE (
     .tx-mwkeywordlist-pi1 { font-family: Verdana, Tahoma, Arial, sans-serif; }

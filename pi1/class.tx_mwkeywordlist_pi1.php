@@ -173,6 +173,11 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 		if ($this->pageList == null) {
 			$this->pageList = array();
 		}
+	
+			// If option is set, exclude pages that have the "do not show in menu" option activated
+		if ($this->conf['excludeNotInMenu'] == 1) {
+			$enableFields .= ' AND nav_hide = 0';
+		}
 
 		// Retrieve the pagetree and JOIN relevant translations from table
 		// pages_language_overlay (plo) only if necessary - improves performance
@@ -354,19 +359,25 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 				$keywords = preg_split('/[\s]*,[\s]*/', $pages_row['keywords'], -1, PREG_SPLIT_NO_EMPTY);
 				if (sizeof($keywords) > 0) {
 					foreach ($keywords AS $keyword) {
+							// Define field that is used as linktext, see issue #6048
+						if ($this->conf['linktext'] != '') {
+							$linktext = $this->cObj->getData($this->conf['linktext'], $pages_row);
+						} else {
+							$linktext = $pages_row['title'];
+						}
 						$simplifiedKeyword = $this->simplifyString($keyword);
 						$key = strtoupper(substr($simplifiedKeyword, 0, 1));
 						if (in_array($key, $this->jumpMenuIndexKeys)) {
-							$index[$key][$simplifiedKeyword][$pages_row['title']] = $uid;
+							$index[$key][$simplifiedKeyword][$linktext] = $uid;
 							$originalKeywords[$simplifiedKeyword] = $keyword;
 						} else {
-							$index['0-9'][$simplifiedKeyword][$pages_row['title']] = $uid;
+							$index['0-9'][$simplifiedKeyword][$linktext] = $uid;
 							$originalKeywords[$simplifiedKeyword] = $keyword;
 						}
 					}
 				}
 			}
-
+			
 			// Sort the index
 			@ksort($index);
 
