@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Labels for the mw_keywordlist extension</description>
+        <type>module</type>
+        <csh_table></csh_table>
+        <labelContext type="array">
+        </labelContext>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="tt_content.menu_type_pi1">A-Z keyword list with pages linked</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="tt_content.menu_type_pi1">A-Z Schlüsselwort-Index mit verlinkten Seiten</label>
+        </languageKey>
+        <languageKey index="fi" type="array">
+            <label index="tt_content.menu_type_pi1">A-Z avainsanalista linkattuna sivuille</label>
+        </languageKey>
+    </data>
+    <orig_hash type="array">
+        <languageKey index="default" type="array">
+            <label index="tt_content.menu_type_pi1" type="integer">226964991</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="tt_content.menu_type_pi1" type="integer">226964991</label>
+        </languageKey>
+        <languageKey index="fi" type="array">
+            <label index="tt_content.menu_type_pi1" type="integer">226964991</label>
+        </languageKey>
+    </orig_hash>
+    <orig_text type="array">
+        <languageKey index="default" type="array">
+        </languageKey>
+        <languageKey index="de" type="array">
+        </languageKey>
+        <languageKey index="fi" type="array">
+        </languageKey>
+    </orig_text>
+</T3locallang>

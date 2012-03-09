@@ -34,15 +34,14 @@ $EM_CONF[$_EXTKEY] = array(
 	'CGLcompliance_note' => '',
 	'constraints' => array(
 		'depends' => array(
-			'php' => '4.0.12-5.2.99',
-			'typo3' => '3.6.0-4.3.99',
+			'php' => '5.0.0-5.3.99',
+			'typo3' => '4.2.0-4.6.99',
 		),
 		'conflicts' => array(
 		),
 		'suggests' => array(
 		),
 	),
-	'_md5_values_when_last_written' => 'a:11:{s:12:"ext_icon.gif";s:4:"b92c";s:17:"ext_localconf.php";s:4:"b932";s:15:"ext_php_api.dat";s:4:"80de";s:14:"ext_tables.php";s:4:"e356";s:28:"ext_typoscript_constants.txt";s:4:"c710";s:24:"ext_typoscript_setup.txt";s:4:"0504";s:16:"locallang_db.php";s:4:"abb1";s:14:"doc/manual.sxw";s:4:"18e5";s:19:"doc/wizard_form.dat";s:4:"aa97";s:20:"doc/wizard_form.html";s:4:"24a4";s:34:"pi1/class.tx_mwkeywordlist_pi1.php";s:4:"ae55";}',
 	'suggests' => array(
 	),
 );
