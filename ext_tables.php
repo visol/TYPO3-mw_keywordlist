@@ -16,4 +16,6 @@ if (!defined ('TYPO3_MODE')) {
 
 t3lib_extMgm::addPlugin(array('LLL:EXT:mw_keywordlist/locallang_db.xml:tt_content.menu_type_pi1', $_EXTKEY.'_pi1'), 'menu_type');
 
+	// Add TypoScript configuration files
+t3lib_extMgm::addStaticFile($_EXTKEY, 'static/', 'A-Z Keywordlist');
 ?>

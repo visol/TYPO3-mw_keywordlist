@@ -391,11 +391,12 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 				if ($firstchar != $lastchar) {
 
 						// add anchor
-					$sectionHeader .= "\n\t" . '<a name="'. ($firstchar == '0-9' ? 'general' : strtolower($firstchar)) .
-							'" id="' . ($firstchar == '0-9' ? 'general' : strtolower($firstchar)) .'"></a>' . "\n";
+					$sectionHeader .= chr(10) . chr(9).
+							'<a name="'. ($firstchar == '0-9' ? 'general' : strtolower($firstchar)) .
+							'" id="' . ($firstchar == '0-9' ? 'general' : strtolower($firstchar)) .'"></a>' . chr(10);
 
 						// add sectionHeader (capital letter)
-					$sectionHeader .= "\t" . $this->cObj->wrap($firstchar, $conf['sectionHeaderWrap']);
+					$sectionHeader .= chr(9) . $this->cObj->wrap($firstchar, $conf['sectionHeaderWrap']);
 
 						// add character to existing char list
 					$this->existingKeys[] = $firstchar;
@@ -411,11 +412,11 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 					ksort($properties);
 					foreach ($properties AS $property => $value) {
 						if ($keyword != $prevKeyword) {
-							$keywordRelationList .= "\n\t\t" . $this->cObj->wrap(
+							$keywordRelationList .= chr(10) . chr(9) . chr(9) . chr(9) . $this->cObj->wrap(
 								htmlspecialchars($originalKeywords[$keyword]),
-								$conf['keywordWrap']) . "\n";
+								$conf['keywordWrap']) . chr(10);
 						}
-						$keywordRelationList .= "\n\t\t\t" . $this->cObj->wrap(
+						$keywordRelationList .= chr(10) . chr(9) . chr(9) . chr(9) . $this->cObj->wrap(
 							$this->pi_linkToPage($conf['bullet'] . $property, $value),
 							$conf['keywordRelationListItemWrap']);
 						$prevKeyword = $keyword;
@@ -423,10 +424,10 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 
 				}
 
-				$keywordRelationList = "\t\t" . $this->cObj->wrap(
+				$keywordRelationList = chr(9) . chr(9) . $this->cObj->wrap(
 					$keywordRelationList,
-					$conf['keywordRelationListWrap']) . "\n\t";
-				$keywordSection =  "\n\t" . $this->cObj->wrap(
+					$conf['keywordRelationListWrap']) . chr(10) . chr(9);
+				$keywordSection =  chr(10) . chr(9) . $this->cObj->wrap(
 					$keywordRelationList,
 					$conf['keywordSectionWrap']);
 				$content .= $sectionHeader . $keywordSection;
@@ -530,7 +531,8 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 			if (in_array($jumpMenuIndexKey, $this->existingKeys)) {
 				$jumpMenu[] = '<a' . $this->pi_classParam('activeLink') . ' href="'.
 						$this->pi_getPageLink($GLOBALS['TSFE']->id, '', '') . '#'.
-						$this->elUid . strtolower($jumpMenuIndexKey) . '">' . $jumpMenuIndexKey . '</a>';
+						$this->elUid . strtolower($jumpMenuIndexKey) . '" rel="' .strtolower($jumpMenuIndexKey). '">' .
+						$jumpMenuIndexKey . '</a>';
 			} else {
 				$jumpMenu[] = '<span' . $this->pi_classParam('inactiveLink') . '>' . $jumpMenuIndexKey . '</span>';
 			}

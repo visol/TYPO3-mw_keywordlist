@@ -2,7 +2,7 @@
 #
 # @package		TYPO3
 # @subpackage	tx_mwkeywordlist
-# @version		$Id$
+# @version		$Id: ext_typoscript_setup.txt 824 2010-05-14 08:28:36Z mh $
 # @author		mehrwert <typo3@mehrwert.de>
 # @license		GPL
 #
@@ -15,7 +15,7 @@ plugin.tx_mwkeywordlist_pi1 {
   sectionHeaderWrap = <h2>|</h2>
   sectionWrap = <div class="section">|</div>
   keywordSectionWrap = <div>|</div>
-  keywordWrap = <strong>|</strong>
+  keywordWrap = <li><strong>|</strong></li>
   keywordRelationListWrap = <ul>|</ul>
   keywordRelationListItemWrap = <li>|</li>
   jumpMenuSeperator = &#124;
@@ -59,3 +59,6 @@ plugin.tx_mwkeywordlist_pi1 {
   )
 
 }
+
+# Include javascript for the keyword list
+page.includeJS.mw_keywordlist = EXT:mw_keywordlist/res/js/tx_mwkeywordlist.js
