@@ -4,11 +4,12 @@
  *
  * @package		TYPO3
  * @subpackage	tx_mwkeywordlist
- * @version		$Id: $
+ * @version		$Id$
  * @author		mehrwert <typo3@mehrwert.de>
  * @license		GPL
  */
-var KeywordList = {
+var TxMwKeywordList = {
+
 	/**
 	 * Init method.
 	 * Get all menus on this page. For each of the menus hide all sections except the first one
@@ -17,11 +18,11 @@ var KeywordList = {
 	init: function() {
 		$('.tx-mwkeywordlist-pi1').each(function(index, element) {
 				// Hide all sections except the first one
-			KeywordList.showLetterContent($(element).find('A[name]:first'));
+			TxMwKeywordList.showLetterContent($(element).find('A[name]:first'));
 				// Add click action to jump menu links
 			$(element).find('.tx-mwkeywordlist-pi1-jumpmenu A').bind({
 				click: function() {
-					KeywordList.showLetterContent($(element).find('A[name='+this.rel+']'));
+					TxMwKeywordList.showLetterContent($(element).find('A[name='+this.rel+']'));
 					return false;
 				}
 			});
@@ -31,7 +32,7 @@ var KeywordList = {
 	/**
 	 * Get the siblings of the incoming A-Tag and hide them and the tag.
 	 * Show the elements between the current tag and the next tag.
-	 * 
+	 *
 	 * @param element The A-Tag element whose siblings should be shown
 	 */
 	showLetterContent: function(element) {
@@ -51,12 +52,13 @@ var KeywordList = {
 	}
 };
 
-if (typeof jQuery == 'undefined') {  
-    alert('Error: the jQuery library has to be included');
+	// Test for jQuery
+if (typeof jQuery == 'undefined') {
+	alert('Error: The jQuery library has to be included (use page.includeJS)');
 } else {
-    	// Wait until DOM is ready
+	// Wait until DOM is ready
 	$(document).ready(function() {
 			// Initiate the keyword list class
-		new KeywordList.init();
+		new TxMwKeywordList.init();
 	});
 }
