@@ -367,7 +367,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 			ksort($index);
 
 				// Sort array, first level
-			array_walk($index, $this->mwArraySort);
+			array_walk($index, array($this, 'mwArraySort'));
 
 				// last alphabetic character
 			$lastchar = '';
