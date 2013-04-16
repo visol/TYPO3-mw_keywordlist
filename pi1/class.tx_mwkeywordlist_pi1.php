@@ -521,7 +521,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 			// Special treatment for special chars and data
 		if (in_array('0-9', $this->existingKeys)) {
 			$jumpMenu[] = '<a' . $this->pi_classParam('activeLink') . ' href="'.
-					$this->pi_getPageLink($GLOBALS['TSFE']->id, '', '') . '#general' . $this->elUid . '">0-9</a>';
+					$this->pi_getPageLink($GLOBALS['TSFE']->id, '', '') . '#general' . $this->elUid . '" rel="general">0-9</a>';
 		} else {
 			$jumpMenu[] = '<span' . $this->pi_classParam('inactiveLink') . '>0-9</span>';
 		}
