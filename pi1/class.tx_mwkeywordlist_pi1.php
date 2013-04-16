@@ -124,6 +124,12 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 	 */
 	public $contentDoktypes = '';
 
+	/**
+	 * Flag if cipher index (0-9) should be displayed at the end.
+	 * @var	Boolean
+	 */
+	public $showCipherIndexAtTheEnd = FALSE;
+
 	/********************************************
 	 *
 	 * Main control and dispatcher functions
@@ -313,6 +319,12 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 			$this->enableWorkspaces = FALSE;
 		}
 
+		// If activated in backed, set showCipherIndexAtTheEnd flag to true.
+		// Field "filelink_size" is used here.
+		if (intval($this->cObj->data['filelink_size']) == 1) {
+			$this->showCipherIndexAtTheEnd = TRUE;
+		}
+
 		$this->setContentPageTypes();
 		$this->setContentPageTypesWhereClause();
 
@@ -368,6 +380,11 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 
 				// Sort array, first level
 			array_walk($index, array($this, 'mwArraySort'));
+
+			// Set 0-9 index to last position if enabled in backend
+			if ($this->showCipherIndexAtTheEnd === TRUE) {
+				$index = $this->moveCipherIndexToLastPosition($index);
+			}
 
 				// last alphabetic character
 			$lastchar = '';
@@ -520,10 +537,10 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 
 			// Special treatment for special chars and data
 		if (in_array('0-9', $this->existingKeys)) {
-			$jumpMenu[] = '<a' . $this->pi_classParam('activeLink') . ' href="'.
+			$jumpMenu['0-9'] = '<a' . $this->pi_classParam('activeLink') . ' href="'.
 					$this->pi_getPageLink($GLOBALS['TSFE']->id, '', '') . '#general' . $this->elUid . '" rel="general">0-9</a>';
 		} else {
-			$jumpMenu[] = '<span' . $this->pi_classParam('inactiveLink') . '>0-9</span>';
+			$jumpMenu['0-9'] = '<span' . $this->pi_classParam('inactiveLink') . '>0-9</span>';
 		}
 
 			// Loop through all chars and fill the jump menu array
@@ -536,6 +553,11 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 			} else {
 				$jumpMenu[] = '<span' . $this->pi_classParam('inactiveLink') . '>' . $jumpMenuIndexKey . '</span>';
 			}
+		}
+
+		// Set 0-9 index to last position if enabled in backend
+		if ($this->showCipherIndexAtTheEnd === TRUE) {
+			$jumpMenu = $this->moveCipherIndexToLastPosition($jumpMenu);
 		}
 
 		$jumpMenu = implode(' ' . $this->conf['jumpMenuSeperator'] . ' ', $jumpMenu);
@@ -585,6 +607,24 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 		if (!empty($this->contentDoktypes)) {
 			$this->contentDoktypesWhereClause = ' AND pages.doktype IN ('. $this->contentDoktypes .')';
 		}
+	}
+
+
+	/**
+	 * Look for an array entry with key "0-9" and move it to the last position of the array.
+	 * Return the modified array.
+	 *
+	 * @param array $dataArray Array with data of the jump menu or the index entries.
+	 * @return array The modified data array.
+	 */
+	private function moveCipherIndexToLastPosition($dataArray) {
+		if (array_key_exists('0-9', $dataArray)) {
+			$ciphers = $dataArray['0-9'];
+			unset($dataArray['0-9']);
+			$dataArray['0-9'] = $ciphers;
+		}
+
+		return $dataArray;
 	}
 }
 

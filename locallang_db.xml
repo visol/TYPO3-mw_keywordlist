@@ -10,9 +10,11 @@
     <data type="array">
         <languageKey index="default" type="array">
             <label index="tt_content.menu_type_pi1">A-Z keyword list with pages linked</label>
+            <label index="label_filelink_size">Show 0-9 index at the end (A-Z keyword list only)</label>
         </languageKey>
         <languageKey index="de" type="array">
             <label index="tt_content.menu_type_pi1">A-Z Schlüsselwort-Index mit verlinkten Seiten</label>
+            <label index="label_filelink_size">Zeige 0-9 Index am Ende (für A-Z Schlüsselwort-Index)</label>
         </languageKey>
         <languageKey index="fi" type="array">
             <label index="tt_content.menu_type_pi1">A-Z avainsanalista linkattuna sivuille</label>
