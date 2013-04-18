@@ -54,7 +54,7 @@ var TxMwKeywordList = {
 
 	// Test for jQuery
 if (typeof jQuery == 'undefined') {
-	alert('Error: The jQuery library has to be included (use page.includeJS)');
+	alert('Error: The jQuery library has to be included (Hint: use page.includeJS)');
 } else {
 	// Wait until DOM is ready
 	$(document).ready(function() {

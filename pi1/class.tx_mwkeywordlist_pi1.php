@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2004-2012 mehrwert (typo3@mehrwert.de)
+*  (c) 2004-2013 mehrwert (typo3@mehrwert.de)
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -23,7 +23,7 @@
 ***************************************************************/
 
 	// Include TSlib
-require_once (PATH_tslib.'class.tslib_pibase.php');
+require_once (PATH_tslib . 'class.tslib_pibase.php');
 
 /**
  * Plugin A-Z keyword list with pages linked for the 'mw_keywordlist'
@@ -180,9 +180,9 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 								plo.subtitle AS subtitle,
 								plo.keywords AS keywords';
 
-			$fromTable = 'pages AS pages'.
-							' LEFT JOIN pages_language_overlay AS plo ON pages.uid=plo.pid'.
-							' AND plo.sys_language_uid = '. $sysLanguageUid;
+			$fromTable = 'pages AS pages' .
+							' LEFT JOIN pages_language_overlay AS plo ON pages.uid=plo.pid' .
+							' AND plo.sys_language_uid = ' . $sysLanguageUid;
 		} else {
 			$selectFields = '	uid,
 								pid,
@@ -199,7 +199,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 		if ($uid == 0) {
 			$whereClause	= 'pages.pid = ' . $uid . $enableFields;
 		} else {
-			$whereClause	= ($level == 0) ? 'pages.uid IN (' . $uid . ')'.
+			$whereClause	= ($level == 0) ? 'pages.uid IN (' . $uid . ')' .
 					$enableFields : 'pages.pid = ' . $uid . $enableFields;
 		}
 
@@ -319,8 +319,8 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 			$this->enableWorkspaces = FALSE;
 		}
 
-		// If activated in backed, set showCipherIndexAtTheEnd flag to true.
-		// Field "filelink_size" is used here.
+			// If activated in backed, set showCipherIndexAtTheEnd flag to true.
+			// Field "filelink_size" is used here.
 		if (intval($this->cObj->data['filelink_size']) == 1) {
 			$this->showCipherIndexAtTheEnd = TRUE;
 		}
@@ -381,7 +381,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 				// Sort array, first level
 			array_walk($index, array($this, 'mwArraySort'));
 
-			// Set 0-9 index to last position if enabled in backend
+				// Set 0-9 index to last position if enabled in backend
 			if ($this->showCipherIndexAtTheEnd === TRUE) {
 				$index = $this->moveCipherIndexToLastPosition($index);
 			}
@@ -408,9 +408,9 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 				if ($firstchar != $lastchar) {
 
 						// add anchor
-					$sectionHeader .= chr(10) . chr(9).
-							'<a name="'. ($firstchar == '0-9' ? 'general' : strtolower($firstchar)) .
-							'" id="' . ($firstchar == '0-9' ? 'general' : strtolower($firstchar)) .'"></a>' . chr(10);
+					$sectionHeader .= chr(10) . chr(9) .
+							'<a name="' . ($firstchar == '0-9' ? 'general' : strtolower($firstchar)) .
+							'" id="' . ($firstchar == '0-9' ? 'general' : strtolower($firstchar)) . '"></a>' . chr(10);
 
 						// add sectionHeader (capital letter)
 					$sectionHeader .= chr(9) . $this->cObj->wrap($firstchar, $conf['sectionHeaderWrap']);
@@ -537,7 +537,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 
 			// Special treatment for special chars and data
 		if (in_array('0-9', $this->existingKeys)) {
-			$jumpMenu['0-9'] = '<a' . $this->pi_classParam('activeLink') . ' href="'.
+			$jumpMenu['0-9'] = '<a' . $this->pi_classParam('activeLink') . ' href="' .
 					$this->pi_getPageLink($GLOBALS['TSFE']->id, '', '') . '#general' . $this->elUid . '" rel="general">0-9</a>';
 		} else {
 			$jumpMenu['0-9'] = '<span' . $this->pi_classParam('inactiveLink') . '>0-9</span>';
@@ -546,16 +546,16 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 			// Loop through all chars and fill the jump menu array
 		foreach ($this->jumpMenuIndexKeys AS $jumpMenuIndexKey) {
 			if (in_array($jumpMenuIndexKey, $this->existingKeys)) {
-				$jumpMenu[] = '<a' . $this->pi_classParam('activeLink') . ' href="'.
-						$this->pi_getPageLink($GLOBALS['TSFE']->id, '', '') . '#'.
-						$this->elUid . strtolower($jumpMenuIndexKey) . '" rel="' .strtolower($jumpMenuIndexKey). '">' .
+				$jumpMenu[] = '<a' . $this->pi_classParam('activeLink') . ' href="' .
+						$this->pi_getPageLink($GLOBALS['TSFE']->id, '', '') . '#' .
+						$this->elUid . strtolower($jumpMenuIndexKey) . '" rel="' . strtolower($jumpMenuIndexKey) . '">' .
 						$jumpMenuIndexKey . '</a>';
 			} else {
 				$jumpMenu[] = '<span' . $this->pi_classParam('inactiveLink') . '>' . $jumpMenuIndexKey . '</span>';
 			}
 		}
 
-		// Set 0-9 index to last position if enabled in backend
+			// Set 0-9 index to last position if enabled in backend
 		if ($this->showCipherIndexAtTheEnd === TRUE) {
 			$jumpMenu = $this->moveCipherIndexToLastPosition($jumpMenu);
 		}
@@ -605,14 +605,14 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 	 */
 	private function setContentPageTypesWhereClause() {
 		if (!empty($this->contentDoktypes)) {
-			$this->contentDoktypesWhereClause = ' AND pages.doktype IN ('. $this->contentDoktypes .')';
+			$this->contentDoktypesWhereClause = ' AND pages.doktype IN (' . $this->contentDoktypes . ')';
 		}
 	}
 
 
 	/**
-	 * Look for an array entry with key "0-9" and move it to the last position of the array.
-	 * Return the modified array.
+	 * Look for an array entry with key "0-9" and move it to the last
+	 * position of the array. Return the modified array.
 	 *
 	 * @param array $dataArray Array with data of the jump menu or the index entries.
 	 * @return array The modified data array.
