@@ -15,7 +15,20 @@ if (!defined ('TYPO3_MODE')) {
 }
 
 	// Check TYPO3 version and add TypoScript configuration files
-if (version_compare(TYPO3_version, '6.0.0') < 0) {
+if (version_compare(TYPO3_version, '6.0.0', '>=') == TRUE) {
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPlugin(
+		array(
+			'LLL:EXT:mw_keywordlist/locallang_db.xml:tt_content.menu_type_listview',
+			$_EXTKEY . '_listview'
+		),
+		'menu_type'
+	);
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+		$_EXTKEY,
+		'static/6.x/',
+		'A-Z Keywordlist'
+	);
+} else {
 	t3lib_extMgm::addPlugin(
 		array(
 			'LLL:EXT:mw_keywordlist/locallang_db.xml:tt_content.menu_type_pi1',
@@ -24,19 +37,6 @@ if (version_compare(TYPO3_version, '6.0.0') < 0) {
 		'menu_type'
 	);
 	t3lib_extMgm::addStaticFile(
-		$_EXTKEY,
-		'static/',
-		'A-Z Keywordlist'
-	);
-} else {
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPlugin(
-		array(
-			'LLL:EXT:mw_keywordlist/locallang_db.xml:tt_content.menu_type_pi1',
-			$_EXTKEY . '_pi1'
-		),
-		'menu_type'
-	);
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
 		$_EXTKEY,
 		'static/',
 		'A-Z Keywordlist'

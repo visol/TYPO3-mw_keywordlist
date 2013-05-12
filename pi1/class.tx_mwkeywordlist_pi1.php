@@ -22,9 +22,6 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-	// Include TSlib
-require_once (PATH_tslib . 'class.tslib_pibase.php');
-
 /**
  * Plugin A-Z keyword list with pages linked for the 'mw_keywordlist'
  * extension. Provides facilities to retrieve keywords from the pages and

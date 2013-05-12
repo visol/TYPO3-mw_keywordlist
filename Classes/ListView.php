@@ -35,19 +35,19 @@ namespace mehrwert\MwKeywordlist;
  * @author		mehrwert <typo3@mehrwert.de>
  * @license		GPL
  */
-class ListView extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
+class Tx_MwKeywordlist_ListView extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
 
 	/**
 	 * Same as class name
 	 * @var	String
 	 */
-	public $prefixId = 'tx_mwkeywordlist_pi1';
+	public $prefixId = 'Tx_MwKeywordlist_ListView';
 
 	/**
 	 * Path to this script relative to the extension dir.
 	 * @var	String
 	 */
-	public $scriptRelPath = 'pi1/class.tx_mwkeywordlist_pi1.php';
+	public $scriptRelPath = 'Classes/ListView.php';
 
 	/**
 	 * The extension key.

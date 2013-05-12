@@ -15,18 +15,18 @@ if (!defined ('TYPO3_MODE')) {
 }
 
 	// Check TYPO3 version and add new menu type
-if (version_compare(TYPO3_version, '6.0.0') < 0) {
-	t3lib_extMgm::addPItoST43(
+if (version_compare(TYPO3_version, '6.0.0', '>=') == 1) {
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPItoST43(
 		$_EXTKEY,
-		'pi1/class.tx_mwkeywordlist_pi1.php',
-		'_pi1',
+		'Classes/ListView.php',
+		'_ListView',
 		'menu_type',
 		1
 	);
 } else {
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPItoST43(
+	t3lib_extMgm::addPItoST43(
 		$_EXTKEY,
-		'Classes/ListView.php',
+		'pi1/class.tx_mwkeywordlist_pi1.php',
 		'_pi1',
 		'menu_type',
 		1
