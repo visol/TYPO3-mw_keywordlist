@@ -15,7 +15,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'description' => 'Extracts all keywords from the page\'s keyword field and displays a list of keywords and links the page title to the keyword related page.',
 	'category' => 'plugin',
 	'shy' => 0,
-	'version' => '3.3.1',
+	'version' => '3.4.0',
 	'dependencies' => '',
 	'conflicts' => '',
 	'priority' => '',
@@ -34,8 +34,8 @@ $EM_CONF[$_EXTKEY] = array(
 	'CGLcompliance_note' => '',
 	'constraints' => array(
 		'depends' => array(
-			'php' => '5.0.0-5.3.99',
-			'typo3' => '4.5.0-4.6.99',
+			'php' => '5.0.0-5.4.99',
+			'typo3' => '4.5.0-6.2.99',
 		),
 		'conflicts' => array(
 		),

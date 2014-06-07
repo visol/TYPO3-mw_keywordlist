@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2004-2013 mehrwert (typo3@mehrwert.de)
+*  (c) 2004-2014 mehrwert (typo3@mehrwert.de)
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -22,9 +22,6 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-	// Include TSlib
-require_once (PATH_tslib . 'class.tslib_pibase.php');
-
 /**
  * Plugin A-Z keyword list with pages linked for the 'mw_keywordlist'
  * extension. Provides facilities to retrieve keywords from the pages and
@@ -32,7 +29,6 @@ require_once (PATH_tslib . 'class.tslib_pibase.php');
  *
  * @package		TYPO3
  * @subpackage	tx_mwkeywordlist
- * @version		$Id$
  * @author		mehrwert <typo3@mehrwert.de>
  * @license		GPL
  */

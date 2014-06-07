@@ -1,0 +1,7 @@
+﻿.. |img-4|      image:: ../../Images/manual_html_7e05f5dc.png
+   :height: 280
+   :width: 371
+.. :align: left
+.. :border: 0
+.. :name: Grafik4
+
