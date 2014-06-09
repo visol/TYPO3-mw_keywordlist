@@ -26,13 +26,13 @@ Available configuration options for this extension:
 
    Property
          Property:
-   
+
    Data type
          Data type:
-   
+
    Description
          Description:
-   
+
    Default
          Default:
 
@@ -41,13 +41,13 @@ Available configuration options for this extension:
 
    Property
          allWrap /+stdWrap
-   
+
    Data type
          wrap
-   
+
    Description
          Wraps the whole item
-   
+
    Default
 
 
@@ -55,13 +55,13 @@ Available configuration options for this extension:
 
    Property
          contentWrap
-   
+
    Data type
          wrap
-   
+
    Description
          Wraps the whole content
-   
+
    Default
          <div class="tx-mwkeywordlist-pi1-content">\|</div>
 
@@ -70,13 +70,13 @@ Available configuration options for this extension:
 
    Property
          sectionHeaderWrap
-   
+
    Data type
          wrap
-   
+
    Description
          Wraps the sections headers [2]
-   
+
    Default
          <h2>\|</h2>
 
@@ -85,13 +85,13 @@ Available configuration options for this extension:
 
    Property
          sectionWrap
-   
+
    Data type
          string
-   
+
    Description
          Wraps the complete section
-   
+
    Default
          <div class="section">\|</div>
 
@@ -100,13 +100,13 @@ Available configuration options for this extension:
 
    Property
          keywordSectionWrap
-   
+
    Data type
          string
-   
+
    Description
          Wraps the keyword section
-   
+
    Default
          <div>\|</div>
 
@@ -115,13 +115,13 @@ Available configuration options for this extension:
 
    Property
          keywordWrap
-   
+
    Data type
          string
-   
+
    Description
          Wraps the individual keyword [3]
-   
+
    Default
          <strong>\|</strong>
 
@@ -130,13 +130,13 @@ Available configuration options for this extension:
 
    Property
          keywordRelationListWrap
-   
+
    Data type
          string
-   
+
    Description
          Wraps the relates links list
-   
+
    Default
          <ul>\|</ul>
 
@@ -145,13 +145,13 @@ Available configuration options for this extension:
 
    Property
          keywordRelationListItemWrap
-   
+
    Data type
          string
-   
+
    Description
          Wraps the individual link [4]
-   
+
    Default
          <li>\|</li>
 
@@ -160,13 +160,13 @@ Available configuration options for this extension:
 
    Property
          jumpMenuSeperator
-   
+
    Data type
          string
-   
+
    Description
          The character to separate the jump links
-   
+
    Default
          &#124; the pipe “\|”
 
@@ -175,13 +175,13 @@ Available configuration options for this extension:
 
    Property
          sectionTopLink
-   
+
    Data type
          string
-   
+
    Description
          Text (or image) for the toplink [5]
-   
+
    Default
          To top
 
@@ -190,13 +190,13 @@ Available configuration options for this extension:
 
    Property
          sectionTopLinkWrap
-   
+
    Data type
          string
-   
+
    Description
          Wraps the toplink
-   
+
    Default
          <div class="sectiontoplink"><a href="#top">\|</a></div>
 
@@ -205,13 +205,13 @@ Available configuration options for this extension:
 
    Property
          showSectionTopLinks
-   
+
    Data type
          boolean
-   
+
    Description
          Display the toplink
-   
+
    Default
          1
 
@@ -220,13 +220,13 @@ Available configuration options for this extension:
 
    Property
          bullet
-   
+
    Data type
          string
-   
+
    Description
          Bullet (image) to prepend each list item
-   
+
    Default
 
 
@@ -234,13 +234,13 @@ Available configuration options for this extension:
 
    Property
          levels
-   
+
    Data type
          Int+
-   
+
    Description
          Number of levels the plugin should recursively extract keywords
-   
+
    Default
          5
 
@@ -279,20 +279,20 @@ in a strong italic font.
 ::
 
    plugin.tx_mwkeywordlist_pi1 {
-           
+
            contentWrap  =  <div class="tx-mwkeywordlist-pi1-content">|</div>
            sectionHeaderWrap  =  <h2>|</h2>
            sectionWrap  =  <div class="section">|</div>
            keywordSectionWrap  =  <div>|</div>
            keywordWrap  =  <strong><i>|</i></strong>
-           keywordRelationListWrap  = 
+           keywordRelationListWrap  =
            keywordRelationListItemWrap  =  |<br/>
            jumpMenuSeperator  =  &#124;
            sectionTopLink  =  To the page top
            sectionTopLinkWrap  =  <div class="sectiontoplink"><a href="#top">|</a></div>
            showSectionTopLinks  =  1
-           bullet  = 
+           bullet  =
            levels  =  3
-   
+
    }
 

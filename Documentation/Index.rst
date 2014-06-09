@@ -64,9 +64,17 @@ EXT: A-Z Keyword List
 	**Table of Contents**
 
 .. toctree::
-   :maxdepth: 5
-   :titlesonly:
-   :glob:
+	   :maxdepth: 5
+	   :titlesonly:
+	   :glob:
 
-   ExtMehrwertA-zKeywordList/Index
+	   Introduction/Index
+	   UsersManual/Index
+	   Administration/Index
+	   Configuration/Index
+	   Requirements/Index
+	   Tutorial/Index
+	   KnownProblems/Index
+	   To-doList/Index
+	   Changelog/Index
 

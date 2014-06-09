@@ -32,7 +32,6 @@ Insert a content element on the page where the index should appear
 
 |img-3|
 
-
 Insert keywords on the pages
 """"""""""""""""""""""""""""
 

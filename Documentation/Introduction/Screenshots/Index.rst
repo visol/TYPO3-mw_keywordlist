@@ -1,4 +1,4 @@
-﻿
+﻿.. include:: Images.txt
 
 .. ==================================================
 .. FOR YOUR INFORMATION
@@ -15,10 +15,25 @@
 .. role::   php(code)
 
 
-Configuration
--------------
+Screenshots
+^^^^^^^^^^^
 
-You can specify nearly all configuration parameters via TypoScript.See
-theReference for a complete list.
 
+Front end
+"""""""""
+
+|img-1|
+
+The keyword index features a jump menu with all characters
+linked to the correspondingsection. All items can be wrapped
+individually. After every section, a top link is inserted.
+
+
+Back end
+""""""""
+
+Extends the Menu/Sitemap content elements so you can insert an A-Z
+index as content element.
+
+|img-2|
 

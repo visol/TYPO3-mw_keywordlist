@@ -22,12 +22,3 @@ The extension requires the jQuery library included in the page. You
 may add it by using an extension like t3jquery
 (http://typo3.org/extensions/repository/view/t3jquery/current/) or
 include in typoscript.
-
-
-.. toctree::
-   :maxdepth: 5
-   :titlesonly:
-   :glob:
-
-   Reference/Index
-

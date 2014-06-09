@@ -1,4 +1,4 @@
-﻿.. include:: Images.txt
+﻿
 
 .. ==================================================
 .. FOR YOUR INFORMATION
@@ -65,7 +65,4 @@ Changelog
 - 1.1.0: Documentation review
 
 - 1.0.5: initial public release
-
-|img-8| EXT: mehrwert A-Z Keyword List - 7
-
 

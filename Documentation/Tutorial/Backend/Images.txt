@@ -1,4 +1,4 @@
-﻿.. |img-3|      image:: ../../Images/manual_html_326ddedf.png
+.. |img-3|      image:: ../../Images/manual_html_326ddedf.png
    :height: 505
    :width: 665
 .. :align: left
