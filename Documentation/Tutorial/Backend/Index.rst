@@ -30,7 +30,7 @@ Insert a content element on the page where the index should appear
 #. Select the starting point[3]. You can select any page from within your
    page tree. Keywords are extracted recursively from the three page.
 
-|img-3|
+|img-1|
 
 Insert keywords on the pages
 """"""""""""""""""""""""""""
@@ -46,7 +46,7 @@ not of type »Advanced« you can set keywords in the »List mode«.
 
 #. Click on the »+« to »List only this table«
 
-|img-5|
+|img-2|
 
 #. Select »Keywords (,)« from the field list
 
@@ -54,10 +54,10 @@ not of type »Advanced« you can set keywords in the »List mode«.
 
 #. Click on the pen to edit the keywords of the selected page
 
-|img-6|
+|img-3|
 
 Insert your keywords for this page and save. You may need to clear the
 page cache for the keywords to appear in the index.
 
-|img-7|
+|img-4|
 

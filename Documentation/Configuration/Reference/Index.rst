@@ -25,21 +25,6 @@ Available configuration options for this extension:
 .. container:: table-row
 
    Property
-         Property:
-
-   Data type
-         Data type:
-
-   Description
-         Description:
-
-   Default
-         Default:
-
-
-.. container:: table-row
-
-   Property
          allWrap /+stdWrap
 
    Data type
@@ -49,6 +34,7 @@ Available configuration options for this extension:
          Wraps the whole item
 
    Default
+         none
 
 
 .. container:: table-row
@@ -228,6 +214,7 @@ Available configuration options for this extension:
          Bullet (image) to prepend each list item
 
    Default
+         none
 
 
 .. container:: table-row
@@ -266,7 +253,7 @@ Screenshot
 
 #. The top link which is inserted after every section.
 
-|img-4|
+|img-1|
 
 
 Example

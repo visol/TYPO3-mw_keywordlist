@@ -39,7 +39,7 @@ EXT: A-Z Keyword List
 		Keywordlist, A-Z Index, forAdmins, forDevelopers
 
 	:Copyright:
-		2014
+		2002 - 2016
 
 	:Author:
 		mehrwert intermediale kommunikation GmbH

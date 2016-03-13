@@ -31,101 +31,127 @@
  * @subpackage tx_mwkeywordlist
  * @author mehrwert <typo3@mehrwert.de>
  * @license GPL
- * @see Classes/ListView.php
+ * @see pi1/class.tx_mwkeywordlist_pi1.php
  */
-class tx_mwkeywordlist_pi1 extends tslib_pibase {
+class tx_mwkeywordlist_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
+{
 
     /**
      * Same as class name
-     * @var	String
+     * @var    String
      */
     public $prefixId = 'tx_mwkeywordlist_pi1';
 
     /**
      * Path to this script relative to the extension dir.
-     * @var	String
+     * @var    String
      */
-    public $scriptRelPath = 'pi1/class.tx_mwkeywordlist_pi1.php';
+    public $scriptRelPath = 'Classes/KeyWordList.php';
 
     /**
      * The extension key.
-     * @var	String
+     * @var    String
      */
     public $extKey = 'mw_keywordlist';
 
     /**
      * Wether or not to check the cHash.
-     * @var	Boolean
+     * @var    Boolean
      */
-    public $pi_checkCHash = TRUE;
+    public $pi_checkCHash = true;
 
     /**
      * Global configuration.
-     * @var	array
+     * @var    array
      */
     public $conf;
 
     /**
      * Pages read from the pagetree.
-     * @var	array
+     * @var    array
      */
     public $pages = array();
 
     /**
      * Pages in other languages - also read from the pagetree
-     * @var	array
+     * @var    array
      */
     public $pagesLanguageOverlay = array();
 
     /**
      * Available chars of active items
-     * @var	array
+     * @var    array
      */
     public $existingKeys = array();
 
     /**
      * Available chars for jump menu
-     * @var	array
+     * @var    array
      */
-    public $jumpMenuIndexKeys = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
-        'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
-        'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+    public $jumpMenuIndexKeys = array(
+        'A',
+        'B',
+        'C',
+        'D',
+        'E',
+        'F',
+        'G',
+        'H',
+        'I',
+        'J',
+        'K',
+        'L',
+        'M',
+        'N',
+        'O',
+        'P',
+        'Q',
+        'R',
+        'S',
+        'T',
+        'U',
+        'V',
+        'W',
+        'X',
+        'Y',
+        'Z'
+    );
 
     /**
      * Number of iterations
-     * @var	Integer
+     * @var    Integer
      */
     public $numIterations = 0;
 
     /**
      * The pagelist - used in getRecursivePagelist()
-     * @var	Mixed
+     * @var    Mixed
      */
     public $pageList;
 
     /**
      * If set, workspaces are supported
-     * @var	Boolean
+     * @var    Boolean
      */
-    public $enableWorkspaces = FALSE;
+    public $enableWorkspaces = false;
 
     /**
      * Additional option for the where clause
-     * @var	String
+     * @var    String
      */
     public $contentDoktypesWhereClause = '';
 
     /**
      * Additional option for the where clause
-     * @var	String
+     * @var    String
      */
     public $contentDoktypes = '';
 
     /**
      * Flag if cipher index (0-9) should be displayed at the end.
-     * @var	Boolean
+     * @var    Boolean
      */
-    public $showCipherIndexAtTheEnd = FALSE;
+    public $showCipherIndexAtTheEnd = false;
 
     /********************************************
      *
@@ -143,19 +169,20 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
      * - slow hardware (database server)
      * - large page tree
      *
-     * @param mixed    $uid The uid or a comma separated list of uids of the page
-     * @param integer  $maxlevels maximum number of levels to search; defaults to 3
-     * @param integer  $level starting level to search; defaults to 0
-     * @param string   $enableFields TYPO3 enable fields (the additional part of the
-     * @param integer  $sysLanguageUid The current sys_language_uid
+     * @param mixed $uid The uid or a comma separated list of uids of the page
+     * @param integer $maxlevels maximum number of levels to search; defaults to 3
+     * @param integer $level starting level to search; defaults to 0
+     * @param string $enableFields TYPO3 enable fields (the additional part of the
+     * @param integer $sysLanguageUid The current sys_language_uid
      * @return array   List of all pages
      * @todo           Add support for TYPO3 workspaces
      */
-    private function getRecursivePagelist($uid, $maxlevels = 3, $level = 0, $enableFields = '', $sysLanguageUid = 0) {
+    private function getRecursivePagelist($uid, $maxlevels = 3, $level = 0, $enableFields = '', $sysLanguageUid = 0)
+    {
 
         // Returns an array with pagerows for subpages with pid=$uid
         // (which is pid here!). This is used for menus
-        if ($this->pageList == NULL) {
+        if ($this->pageList == null) {
             $this->pageList = array();
         }
 
@@ -194,18 +221,18 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
         // Build the database query: If the user has not set a starting point start
         // at top level (website root, pid = 0). Query for the pid of the pages table
         if ($uid == 0) {
-            $whereClause	= 'pages.pid = ' . $uid . $enableFields;
+            $whereClause = 'pages.pid = ' . $uid . $enableFields;
         } else {
-            $whereClause	= ($level == 0) ? 'pages.uid IN (' . $uid . ')' .
+            $whereClause = ($level == 0) ? 'pages.uid IN (' . $uid . ')' .
                 $enableFields : 'pages.pid = ' . $uid . $enableFields;
         }
 
         // Do not add doktypes to the query if querying the website root, pid = 0
         // otherwise query will probably fail to retrieve any results
-        $whereClause  .= ( $uid == 0 ? '' : $this->contentDoktypesWhereClause);
-        $groupBy		= '';
-        $orderBy		= 'sorting';
-        $limit			= '';
+        $whereClause .= ($uid == 0 ? '' : $this->contentDoktypesWhereClause);
+        $groupBy = '';
+        $orderBy = 'sorting';
+        $limit = '';
 
         // If SQL query succeeds, proceed
         if ($result = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
@@ -214,7 +241,8 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
             $whereClause,
             $groupBy,
             $orderBy,
-            $limit)) {
+            $limit)
+        ) {
 
             // If the query returns at least on row, proceed
             if ($GLOBALS['TYPO3_DB']->sql_num_rows($result) > 0) {
@@ -226,7 +254,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
                     $originalRow = $row;
 
                     // If workscape support is activated
-                    if ($this->enableWorkspaces == TRUE) {
+                    if ($this->enableWorkspaces == true) {
 
                         // Set table name depending on the sysLanguageUid
                         $versionOlqueryTable = $sysLanguageUid != 0 ? 'pages' : 'pages_language_overlay';
@@ -257,7 +285,8 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
 
                         if ($level < $maxlevels) {
                             // $row['uid'] = $originalRow['page_uid'];
-                            $this->getRecursivePagelist($row['uid'], $maxlevels, ($level + 1), $enableFields, $sysLanguageUid);
+                            $this->getRecursivePagelist($row['uid'], $maxlevels, ($level + 1), $enableFields,
+                                $sysLanguageUid);
                         }
                     } else {
                         // If the result of the version overlay check was negative
@@ -275,7 +304,8 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
                         }
 
                         if ($level < $maxlevels) {
-                            $this->getRecursivePagelist($row['uid'], $maxlevels, ($level + 1), $enableFields, $sysLanguageUid);
+                            $this->getRecursivePagelist($row['uid'], $maxlevels, ($level + 1), $enableFields,
+                                $sysLanguageUid);
                         }
                     }
                 }
@@ -287,17 +317,18 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
     /**
      * The main function. Collect keyword data and prepare HTML output.
      *
-     * @param   string   $content Page content
-     * @param   array    $conf configuration options
+     * @param   string $content Page content
+     * @param   array $conf configuration options
      * @return  string   HTML Keyword list
      */
-    public function main($content, $conf) {
+    public function main($content, $conf)
+    {
 
         // get settings for levels, defaults to 4 if not set
         $levels = (isset($conf['levels'])) ? intval($conf['levels']) : 4;
 
         // Show debugging information?
-        $displayParseTimeInfo = ( $conf['displayParseTimeInfo'] == '1' ? TRUE : FALSE );
+        $displayParseTimeInfo = ($conf['displayParseTimeInfo'] == '1' ? true : false);
 
         // start performance test
         if ($displayParseTimeInfo) {
@@ -310,16 +341,16 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
         // Compatiblity with older releases of TYPO3 ( > 4.0.0)
         // that have no support for workspaces
         // Currently disabled!
-        if (t3lib_div::int_from_ver(TYPO3_version) > 4000000) {
-            $this->enableWorkspaces = FALSE;
+        if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) > 4000000) {
+            $this->enableWorkspaces = false;
         } else {
-            $this->enableWorkspaces = FALSE;
+            $this->enableWorkspaces = false;
         }
 
         // If activated in backed, set showCipherIndexAtTheEnd flag to true.
         // Field "filelink_size" is used here.
         if (intval($this->cObj->data['filelink_size']) == 1) {
-            $this->showCipherIndexAtTheEnd = TRUE;
+            $this->showCipherIndexAtTheEnd = true;
         }
 
         $this->setContentPageTypes();
@@ -328,7 +359,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
         // Get the PID from which to make the menu.
         // If a page is set as reference in the 'Startingpoint' field, use that
         // Otherwise use the pages id-number from TSFE
-        $pageUids = t3lib_div::intExplode(',', $this->cObj->data['pages']);
+        $pageUids = \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->cObj->data['pages']);
         $pageUidList = is_array($pageUids) ? implode(',', $pageUids) : intval($GLOBALS['TSFE']->id);
 
         // get the page list
@@ -349,7 +380,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
             reset($this->pages);
 
             // loop through all selected pages
-            while (list($uid, $pagesRow) = each ($this->pages)) {
+            while (list($uid, $pagesRow) = each($this->pages)) {
                 $keywords = preg_split('/[\s]*,[\s]*/', $pagesRow['keywords'], -1, PREG_SPLIT_NO_EMPTY);
                 if (sizeof($keywords) > 0) {
                     foreach ($keywords AS $keyword) {
@@ -379,7 +410,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
             array_walk($index, array($this, 'mwArraySort'));
 
             // Set 0-9 index to last position if enabled in backend
-            if ($this->showCipherIndexAtTheEnd === TRUE) {
+            if ($this->showCipherIndexAtTheEnd === true) {
                 $index = $this->moveCipherIndexToLastPosition($index);
             }
 
@@ -393,7 +424,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
             $keywordRelationList = '';
 
             // Loop through the keys
-            foreach ( (array) $index AS $key => $items) {
+            foreach ((array)$index AS $key => $items) {
 
                 // header for the current section
                 $sectionHeader = '';
@@ -441,7 +472,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
                 $keywordRelationList = chr(9) . chr(9) . $this->cObj->wrap(
                         $keywordRelationList,
                         $conf['keywordRelationListWrap']) . chr(10) . chr(9);
-                $keywordSection =  chr(10) . chr(9) . $this->cObj->wrap(
+                $keywordSection = chr(10) . chr(9) . $this->cObj->wrap(
                         $keywordRelationList,
                         $conf['keywordSectionWrap']);
                 $content .= $sectionHeader . $keywordSection;
@@ -462,7 +493,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
         }
 
         // Concat the jumpmenu and the content (the keywordlist)
-        $content = $this->renderJumpMenu() . $this->cObj->wrap($content, $conf['contentWrap']);
+        $content = '<a name="tx-mwkeywordlist-top"></a>' . $this->renderJumpMenu() . $this->cObj->wrap($content, $conf['contentWrap']);
 
         // wrap final output and return
         return $this->pi_wrapInBaseClass($content);
@@ -477,11 +508,12 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
     /**
      * Callback function for sorting
      *
-     * @param  string  &$value of the array
-     * @param  array   $key of the array
+     * @param  string &$value of the array
+     * @param  array $key of the array
      * @return void
      */
-    public function mwArraySort(&$value, $key) {
+    public function mwArraySort(&$value, $key)
+    {
         ksort($value);
     }
 
@@ -489,12 +521,11 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
      * Convert umlauts in a string for proper sorting in the list
      * utilizing TYPO3 csConvObj in TYPO3 version 3.7.0 or higher
      *
-     * @param   string  $str HTML content for the login form
+     * @param   string $str HTML content for the login form
      * @return  string  Converted string (i.e. � => oe)
-     * @todo	t3lib_div::int_from_ver is deprecated in TYPO3 v4.6 and must be replaced
-     * 			by t3lib_utility_VersionNumber::convertVersionNumberToInteger()
      */
-    private function simplifyString($str) {
+    private function simplifyString($str)
+    {
 
         // Charset detection
         if (isset($GLOBALS['TSFE']->renderCharset) && $GLOBALS['TSFE']->renderCharset != '') {
@@ -506,16 +537,10 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
         // Remove leading and trailing whitespace
         $str = trim($str);
 
-        // Compatiblity with older releases of TYPO3 ( < 3.7.0)
-        if (t3lib_div::int_from_ver(TYPO3_version) < 3007000) {
-            // Convert special chars using old method
-            $str = t3lib_div::convUmlauts($str);
-            $str = strtolower($str);
-        } else {
-            // Convert special chars using csConvObj
-            $str = $GLOBALS['TSFE']->csConvObj->conv_case($charset, $str, 'toLower');
-            $str = $GLOBALS['TSFE']->csConvObj->specCharsToASCII($charset, $str);
-        }
+        // Convert special chars using csConvObj
+        $str = $GLOBALS['TSFE']->csConvObj->conv_case($charset, $str, 'toLower');
+        $str = $GLOBALS['TSFE']->csConvObj->specCharsToASCII($charset, $str);
+
         return $str;
     }
 
@@ -527,7 +552,8 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
      *
      * @return string  HTML code of the jump menu
      */
-    private function renderJumpMenu() {
+    private function renderJumpMenu()
+    {
 
         // Jump menu
         $jumpMenu = array();
@@ -535,7 +561,8 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
         // Special treatment for special chars and data
         if (in_array('0-9', $this->existingKeys)) {
             $jumpMenu['0-9'] = '<a' . $this->pi_classParam('activeLink') . ' href="' .
-                $this->pi_getPageLink($GLOBALS['TSFE']->id, '', '') . '#general' . $this->elUid . '" rel="general">0-9</a>';
+                $this->pi_getPageLink($GLOBALS['TSFE']->id, '',
+                    '') . '#general' . $this->elUid . '" rel="general">0-9</a>';
         } else {
             $jumpMenu['0-9'] = '<span' . $this->pi_classParam('inactiveLink') . '>0-9</span>';
         }
@@ -553,7 +580,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
         }
 
         // Set 0-9 index to last position if enabled in backend
-        if ($this->showCipherIndexAtTheEnd === TRUE) {
+        if ($this->showCipherIndexAtTheEnd === true) {
             $jumpMenu = $this->moveCipherIndexToLastPosition($jumpMenu);
         }
 
@@ -569,7 +596,8 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
      *
      * @return  integer  seconds
      */
-    private function microtimeFloat() {
+    private function microtimeFloat()
+    {
         list($usec, $sec) = explode(' ', microtime());
         return ((float)$usec + (float)$sec);
     }
@@ -582,10 +610,12 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
      *
      * @return void
      */
-    private function setContentPageTypes() {
+    private function setContentPageTypes()
+    {
         if (intval($this->conf['respectContentDoktypes'])) {
             if (!empty($this->conf['setCustomContentDoktypes'])) {
-                $this->contentDoktypes = implode(',', t3lib_div::intExplode(',', $this->conf['setCustomContentDoktypes']));
+                $this->contentDoktypes = implode(',',
+                    \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->conf['setCustomContentDoktypes']));
             } else {
                 $this->contentDoktypes = $GLOBALS['TYPO3_CONF_VARS']['FE']['content_doktypes'];
             }
@@ -600,7 +630,8 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
      *
      * @return void
      */
-    private function setContentPageTypesWhereClause() {
+    private function setContentPageTypesWhereClause()
+    {
         if (!empty($this->contentDoktypes)) {
             $this->contentDoktypesWhereClause = ' AND pages.doktype IN (' . $this->contentDoktypes . ')';
         }
@@ -614,7 +645,8 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
      * @param array $dataArray Array with data of the jump menu or the index entries.
      * @return array The modified data array.
      */
-    private function moveCipherIndexToLastPosition($dataArray) {
+    private function moveCipherIndexToLastPosition($dataArray)
+    {
         if (array_key_exists('0-9', $dataArray)) {
             $ciphers = $dataArray['0-9'];
             unset($dataArray['0-9']);
@@ -625,8 +657,6 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
     }
 }
 
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/mw_keywordlist/pi1/class.tx_mwkeywordlist_pi1.php']) {
-    include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/mw_keywordlist/pi1/class.tx_mwkeywordlist_pi1.php']);
+if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/mw_keywordlist/Classes/ListView.php']) {
+    include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/mw_keywordlist/Classes/ListView.php']);
 }
-
-?>

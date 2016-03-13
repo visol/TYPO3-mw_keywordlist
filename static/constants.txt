@@ -1,9 +1,18 @@
 ### Setup description for extension mw_keywordlist
 #
-# @package		TYPO3
-# @subpackage	tx_mwkeywordlist
-# @version		$Id: ext_typoscript_constants.txt 764 2008-02-13 22:28:41Z ak $
-# @author		mehrwert <typo3@mehrwert.de>
-# @license		GPL
+# @package TYPO3
+# @subpackage tx_mwkeywordlist
+# @author mehrwert intermediale kommunikation GmbH <typo3@mehrwert.de>
+# @license GPL#
 #
 # Here goes the CONSTANTS code
+
+plugin.tx_mwkeywordlist_pi1 {
+	respectContentDoktypes = 0
+	setCustomContentDoktypes =
+	displayParseTimeInfo = 0
+	showSectionTopLinks = 1
+	bullet =
+	levels = 5
+	excludeNotInMenu = 0
+}
