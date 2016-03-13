@@ -15,54 +15,112 @@
 .. role::   php(code)
 
 
-Changelog
----------
+==========
+Change Log
+==========
 
-- 3.4.0: Converted manual to ReST and updated constraints for PHP 5.4 and 6.2.
-  Last maintenance update. Next release will include a major refactoring (v4.0).
+The following is an overview of the changes in this extension. For more details `read the online log <https://github.com/mehrwert/TYPO3-mw_keywordlist>`_.
 
-- 3.3.0: The »0-9« block may be moved to last position in index. Some
-  fixes.
+Version 3.5.0 - 2016-03-05
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- 3.2.0: Each paragraph is wrapped in jQuery panels (if the JS is
-  included)
+Maintenance release with focus on compatibility for TYPO3 CMS 7 LTS. This release
+does not provide new features but fixes some minor issues and provides updates for
+documentation and code. Also, a composer file is included now.
 
-- 3.1.0: Revised Code for TYPO3 4.6 and PHP 5.x compatibility. Switch to
-  XML locallang files.
+- [CHANGE] Revised Code for TYPO3 CMS 7 LTS and PHP 7.0.x compatibility
 
-- 3.0.5: Bugfix release: Fixed a bug where a PHP error is thrown if no
-  keywords are defined. Credits and thanks to Sascha Korzen for
-  reporting this. (2009-05-03)
+  - Add missing top anchor in HTML output and rename default anchor in
+    TypoScript to section = tx-mwkeywordlist-top (you must change this to
+    section = top if you want to use the former anchor).
+  - Add composer.json
+  - Reformat ReadMe.md and remove Changelog.md
+  - Reformat the change log in documentation
+  - Update the manual and add screenshots for TYPO3 CMS 7 LTS
+  - Add separate class file for TYPO3 CMS 6.2 LTS and above
+  - Set compatibility for TYPO3 CMS 8.0-dev (tested with CSS Styled Content)
 
-- 3.0.4: Maintenance release: Updated constraints for compatiblity with
-  TYPO3 4.2.x - no other changes. (2008-11-02)
+Version 3.4.1
+^^^^^^^^^^^^^
 
-- 3.0.3: Issue #4562 [1]: Fixed a PHP fatal error which may occure if
-  other extensions use method name arraysort(). Renamed to mw\_
-  arraysort()
+- [CHANGE] Maintenance release: Fix image includes in manual and reorganize documentation structure.
 
-- 3.0.1: Major rewrite for improved stability and overall performance on
-  large page trees. Remains compatible to old version and configuration.
-  In this release (3.0.1): Added detection if user did not set a
-  starting point and added support to start at the TYPO3 rootline
+Version 3.4.0
+^^^^^^^^^^^^^
 
-- 3.0.0: Major rewrite for improved stability and overall performance on
-  large page trees. Remains compatible to old version and configuration.
+- [CHANGE] Converted manual to ReST and updated constraints for PHP 5.4 and TYPO3 v6.2. Last maintenance update. Next release will include a major refactoring (v4.0).
 
-- 1.3.1: Fixed an issue with umlauts and sorting; Added support for
-  csConvObj if TYPO3 version is 3.7.0 or higher.
+Version 3.3.0
+^^^^^^^^^^^^^
 
-- 1.3.0: Code for multilang support rewritten and optimized
+- [CHANGE] The »0-9« block may be moved to last position in index. Some fixes.
 
-- 1.2.2: Updated the documentation
+Version 3.2.0
+^^^^^^^^^^^^^
 
-- 1.2.1: Merged Finnish translation
+- [CHANGE] Each paragraph is wrapped in jQuery panels (if the JS is included)
 
-- 1.2.0 Added compatibility with multilangual sites, changed DB queries
-  to utilize DBAL and added support for multiple startingpoints per
-  index
+Version 3.1.0
+^^^^^^^^^^^^^
 
-- 1.1.0: Documentation review
+- [CHANGE] Revised Code for TYPO3 4.6 and PHP 5.x compatibility. Switch to XML locallang files.
 
-- 1.0.5: initial public release
+Version 3.0.5
+^^^^^^^^^^^^^
 
+- [CHANGE] Bugfix release: Fixed a bug where a PHP error is thrown if no keywords are defined. Credits and thanks to Sascha Korzen for reporting this. (2009-05-03)
+
+Version 3.0.4
+^^^^^^^^^^^^^
+
+- [CHANGE] Maintenance release: Updated constraints for compatiblity with TYPO3 4.2.x - no other changes. (2008-11-02)
+
+Version 3.0.3
+^^^^^^^^^^^^^
+
+- [CHANGE] Issue #4562 [1]: Fixed a PHP fatal error which may occure if other extensions use method name arraysort(). Renamed to mw_arraysort()
+
+Version 3.0.1
+^^^^^^^^^^^^^
+
+- [CHANGE] Major rewrite for improved stability and overall performance on large page trees. Remains compatible to old version and configuration. In this release (3.0.1): Added detection if user did not set a starting point and added support to start at the TYPO3 rootline
+
+Version 3.0.0
+^^^^^^^^^^^^^
+
+- [CHANGE] Major rewrite for improved stability and overall performance on large page trees. Remains compatible to old version and configuration.
+
+Version 1.3.1
+^^^^^^^^^^^^^
+
+- [CHANGE] Fixed an issue with umlauts and sorting; Added support for csConvObj if TYPO3 version is 3.7.0 or higher.
+
+Version 1.3.0
+^^^^^^^^^^^^^
+
+- [CHANGE] Code for multilang support rewritten and optimized
+
+Version 1.2.2
+^^^^^^^^^^^^^
+
+- [CHANGE] Updated the documentation
+
+Version 1.2.1
+^^^^^^^^^^^^^
+
+- [CHANGE] Merged Finnish translation
+
+Version 1.2.0
+^^^^^^^^^^^^^
+
+- [CHANGE] Added compatibility with multilangual sites, changed DB queries to utilize DBAL and added support for multiple startingpoints per index
+
+Version 1.1.0
+^^^^^^^^^^^^^
+
+- [CHANGE] Documentation review
+
+Version 1.0.5
+^^^^^^^^^^^^^
+
+- [CHANGE] initial public release

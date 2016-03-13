@@ -12,3 +12,9 @@
 .. :border: 0
 .. :name: Grafik9
 
+.. |img-3|      image:: ../../Images/Menu-in-TYPO3-76.png
+   :height: 1373
+   :width: 800
+.. :align: left
+.. :border: 0
+.. :name: Menu-in-TYPO3-76

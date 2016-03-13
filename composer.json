@@ -1,0 +1,14 @@
+{
+  "name": "mehrwert/mw_keywordlist",
+  "type": "typo3-cms-extension",
+  "description": "This extension extends the Menu/Sitemapcontent elements and inserts an A-Z index with Links to the related pages.",
+  "homepage": "https://www.mehrwert.de",
+  "license": ["GPL-2.0+"],
+  "version": "3.5.0",
+  "require": {
+    "typo3/cms-core": ">=4.5.0,<8.1"
+  },
+  "replace": {
+    "mw_keywordlist": "*"
+  }
+}

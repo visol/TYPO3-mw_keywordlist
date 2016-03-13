@@ -35,5 +35,14 @@ Back end
 Extends the Menu/Sitemap content elements so you can insert an A-Z
 index as content element.
 
+TYPO3 4.5-LTS
+"""""""""""""
+
 |img-2|
+
+
+TYPO3 7-LTS
+"""""""""""
+
+|img-3|
 

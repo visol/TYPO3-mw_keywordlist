@@ -25,7 +25,16 @@ menu type [2]. The last step is to select the starting point[3]. You
 can select any page from your page tree. Keywords are extracted
 recursively from this page.
 
-|img-3|
+TYPO3 4.5-LTS
+"""""""""""""
+
+|img-1|
+
+
+TYPO3 7-LTS
+"""""""""""
+
+|img-2|
 
 See the Tutorial section for a complete guide.
 

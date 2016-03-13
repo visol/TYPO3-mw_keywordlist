@@ -1,15 +1,14 @@
 ### Setup description for extension mw_keywordlist
 #
-# @package		TYPO3
-# @subpackage	tx_mwkeywordlist
-# @version		$Id: ext_typoscript_setup.txt 824 2010-05-14 08:28:36Z mh $
-# @author		mehrwert <typo3@mehrwert.de>
-# @license		GPL
+# @package TYPO3
+# @subpackage tx_mwkeywordlist
+# @author mehrwert intermediale kommunikation GmbH <typo3@mehrwert.de>
+# @license GPL#
 #
 plugin.tx_mwkeywordlist_pi1 {
-  respectContentDoktypes = 0
-  setCustomContentDoktypes =
-  displayParseTimeInfo = 0
+  respectContentDoktypes = {$plugin.tx_mwkeywordlist_pi1.respectContentDoktypes}
+  setCustomContentDoktypes = {$plugin.tx_mwkeywordlist_pi1.setCustomContentDoktypes}
+  displayParseTimeInfo = {$plugin.tx_mwkeywordlist_pi1.displayParseTimeInfo}
 
   contentWrap = <div class="tx-mwkeywordlist-pi1-content">|</div>
   sectionHeaderWrap = <h2>|</h2>
@@ -27,17 +26,17 @@ plugin.tx_mwkeywordlist_pi1 {
     noTrimWrap = | ||
     typolink {
       parameter.data = page:uid
-      section = top
+      section = tx-mwkeywordlist-top
       title = To top
     }
   }
 
-  showSectionTopLinks = 1
+  showSectionTopLinks = {$plugin.tx_mwkeywordlist_pi1.showSectionTopLinks}
 
-  bullet =
-  levels = 5
+  bullet = {$plugin.tx_mwkeywordlist_pi1.bullet}
+  levels = {$plugin.tx_mwkeywordlist_pi1.levels}
 
-  excludeNotInMenu = 0
+  excludeNotInMenu = {$plugin.tx_mwkeywordlist_pi1.excludeNotInMenu}
   # Define field that is taken as link text. May be subtitle, nav_title or title. TypoScript getData property
   linktext = field:nav_title // field:title
 
