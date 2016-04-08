@@ -21,6 +21,11 @@ Change Log
 
 The following is an overview of the changes in this extension. For more details `read the online log <https://github.com/mehrwert/TYPO3-mw_keywordlist>`_.
 
+Version 3.5.1 - 2016-04-08
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Re-release of 3.5.0 to TER with compatibility set to 8.0.99.
+
 Version 3.5.0 - 2016-03-05
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
