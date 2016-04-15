@@ -557,7 +557,7 @@ class tx_mwkeywordlist_pi1 extends tslib_pibase {
             $jumpMenu = $this->moveCipherIndexToLastPosition($jumpMenu);
         }
 
-        $jumpMenu = implode(' ' . $this->conf['jumpMenuSeperator'] . ' ', $jumpMenu);
+        $jumpMenu = implode($this->conf['jumpMenuSeperator'], $jumpMenu);
         $jumpMenu = '<div' . $this->pi_classParam('jumpmenu') . '>' . $jumpMenu . '</div>';
 
         return $jumpMenu;
