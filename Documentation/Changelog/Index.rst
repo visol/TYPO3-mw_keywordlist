@@ -21,6 +21,15 @@ Change Log
 
 The following is an overview of the changes in this extension. For more details `read the online log <https://github.com/mehrwert/TYPO3-mw_keywordlist>`_.
 
+Version 3.5.2 - 2016-04-20
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- [CHANGE] Render jumpmenu links with padding for more clickable area
+
+  - Maintenance release to replace spaces in jumpmenu by CSS paddings.
+    Thanks to Philipp Rönsch - https://github.com/theorak - for this contribution!
+  - Update composer.json
+
 Version 3.5.1 - 2016-04-08
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 

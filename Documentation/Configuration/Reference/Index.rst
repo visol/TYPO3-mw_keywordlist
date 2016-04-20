@@ -241,7 +241,9 @@ Screenshot
 """"""""""
 
 #. The jump menu. It is wrapped in a <div> and can be formatted
-   individually. It is marked by the green dotted border.
+   individually. It is marked by the green dotted border. The padding of the
+   characters may be adjusted by CSS padding in .tx-mwkeywordlist-pi1-activeLink
+   and .tx-mwkeywordlist-pi1-inactiveLink
 
 #. The section header. A section consists of the header [2], the
    keyword(s) [3] and the links [4]. The section is marked by the red
