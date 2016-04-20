@@ -44,7 +44,7 @@ plugin.tx_mwkeywordlist_pi1 {
     .tx-mwkeywordlist-pi1 { font-family: Verdana, Tahoma, Arial, sans-serif; }
     .tx-mwkeywordlist-pi1 h1 { font-family: Arial, Helvetica, sans-serif; font-size: 20pt; font-weight: bold; margin: 0px; padding-top: 15px; padding-bottom: 5px; }
     .tx-mwkeywordlist-pi1 h2 { font-family: Arial, Helvetica, sans-serif; font-size: 17pt; font-weight: bold; margin: 0px; padding-top: 15px; padding-bottom: 5px; }
-    .tx-mwkeywordlist-pi1-jumpmenu { padding-bottom: 25px; font-size: 80%; }
+    .tx-mwkeywordlist-pi1-jumpmenu { padding-bottom: 25px; font-size: 80%; word-wrap: break-word; }
     .tx-mwkeywordlist-pi1-keywordlist {  }
 
     .tx-mwkeywordlist-pi1-content div {  }
@@ -53,8 +53,8 @@ plugin.tx_mwkeywordlist_pi1 {
     .tx-mwkeywordlist-pi1-content ul { margin: 0px; padding-bottom: 15px; font-weight: normal; }
     .tx-mwkeywordlist-pi1-content li { margin: 0px; padding: 0px; font-weight: normal;}
 
-    .tx-mwkeywordlist-pi1-activeLink {}
-    .tx-mwkeywordlist-pi1-inactiveLink {}
+    .tx-mwkeywordlist-pi1-activeLink { padding: 5px; }
+    .tx-mwkeywordlist-pi1-inactiveLink { padding: 5px; }
   )
 
 }
