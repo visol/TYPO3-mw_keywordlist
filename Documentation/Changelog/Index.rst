@@ -21,6 +21,15 @@ Change Log
 
 The following is an overview of the changes in this extension. For more details `read the online log <https://github.com/mehrwert/TYPO3-mw_keywordlist>`_.
 
+Version 3.5.3 - 2017-04-08
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- [CHANGE] Add Italian localization
+
+  - Maintenance release to add Italian localization
+    Thanks to Claudio Strizzolo for this contribution!
+  - Update composer.json
+
 Version 3.5.2 - 2016-04-20
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 

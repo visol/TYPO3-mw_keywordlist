@@ -19,6 +19,10 @@
         <languageKey index="fi" type="array">
             <label index="tt_content.menu_type_pi1">A-Z avainsanalista linkattuna sivuille</label>
         </languageKey>
+        <languageKey index="it" type="array">
+            <label index="tt_content.menu_type_pi1">Indice A-Z della parole chiave con collegamento alle pagine</label>
+            <label index="label_filelink_size">Mostra l'indice 0-9 alla fine (per l'indice A-Z delle parole chiave)</label>
+        </languageKey>
     </data>
     <orig_hash type="array">
         <languageKey index="default" type="array">
@@ -30,6 +34,9 @@
         <languageKey index="fi" type="array">
             <label index="tt_content.menu_type_pi1" type="integer">226964991</label>
         </languageKey>
+        <languageKey index="it" type="array">
+            <label index="tt_content.menu_type_pi1" type="integer">226964991</label>
+        </languageKe
     </orig_hash>
     <orig_text type="array">
         <languageKey index="default" type="array">
@@ -37,6 +44,8 @@
         <languageKey index="de" type="array">
         </languageKey>
         <languageKey index="fi" type="array">
+        </languageKey>
+        <languageKey index="it" type="array">
         </languageKey>
     </orig_text>
 </T3locallang>
