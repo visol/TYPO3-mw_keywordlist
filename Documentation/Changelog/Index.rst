@@ -21,6 +21,13 @@ Change Log
 
 The following is an overview of the changes in this extension. For more details `read the online log <https://github.com/mehrwert/TYPO3-mw_keywordlist>`_.
 
+Version 3.5.4 - 2017-09-08
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- [BUGFIX] Add missing closing bracket in localization file
+
+  - Maintenance release - thanks to Matthias Greiling for reporting this bug!
+
 Version 3.5.3 - 2017-04-08
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
