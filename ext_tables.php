@@ -13,17 +13,7 @@ if (!defined('TYPO3_MODE')) {
     die ('Access denied.');
 }
 
-// Determine current TYPO3 version and set class names
-if (version_compare(TYPO3_branch, '6.2', '<')) {
-    $extensionMamagementUtility = 't3lib_extMgm';
-    $generalUtility = 't3lib_div';
-}
-else {
-    $extensionMamagementUtility = '\\TYPO3\\CMS\\Core\\Utility\\ExtensionManagementUtility';
-    $generalUtility = '\\TYPO3\\CMS\\Core\\Utility\\GeneralUtility';
-}
-
-$extensionMamagementUtility::addPlugin(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPlugin(
     array(
         'LLL:EXT:mw_keywordlist/locallang_db.xml:tt_content.menu_type_pi1',
         $_EXTKEY . '_pi1'
@@ -32,10 +22,10 @@ $extensionMamagementUtility::addPlugin(
 );
 
 // Add checkbox to menu palette.
-$TCA['tt_content']['palettes']['menu']['showitem'] .= ',--linebreak--,filelink_size;LLL:EXT:mw_keywordlist/locallang_db.xml:label_filelink_size';
+$GLOBALS['TCA']['tt_content']['palettes']['menu']['showitem'] .= ',--linebreak--,
+	filelink_size;LLL:EXT:mw_keywordlist/locallang_db.xml:label_filelink_size';
 
-// Add TypoScript configuration files
-$extensionMamagementUtility::addStaticFile(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
     $_EXTKEY,
     'static/',
     'A-Z Keywordlist'

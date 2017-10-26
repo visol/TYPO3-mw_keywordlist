@@ -1,7 +1,7 @@
 {
   "name": "mehrwert/ext-mw_keywordlist",
   "type": "typo3-cms-extension",
-  "description": "This extension extends the Menu/Sitemapcontent elements and inserts an A-Z index with Links to the related pages.",
+  "description": "This extension adds a new CType for an A-Z index with Links to the related pages.",
   "keywords": [
     "TYPO3",
     "extension",
@@ -17,10 +17,14 @@
     }
   ],
   "license": ["GPL-2.0"],
-  "version": "3.5.4",
+  "version": "4.0.0",
   "require": {
-    "typo3/cms-core": ">=4.5.0,<8.1",
-    "typo3/cms": "dev-master"
+    "typo3/cms-core": ">=8.7.8,<8.7.99"
+  },
+  "autoload": {
+    "files": [
+      "Classes/ListView.php"
+    ]
   },
   "replace": {
     "mw_keywordlist": "*"
