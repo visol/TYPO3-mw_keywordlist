@@ -285,7 +285,7 @@ class tx_mwkeywordlist_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
 
                         if ($level < $maxlevels) {
                             // $row['uid'] = $originalRow['page_uid'];
-                            $this->getRecursivePagelist($row['uid'], $maxlevels, ($level + 1), $enableFields,
+                            $this->getRecursivePagelist($row['uid'], $maxlevels, ((int) $level + 1), $enableFields,
                                 $sysLanguageUid);
                         }
                     } else {
@@ -304,7 +304,7 @@ class tx_mwkeywordlist_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
                         }
 
                         if ($level < $maxlevels) {
-                            $this->getRecursivePagelist($row['uid'], $maxlevels, ($level + 1), $enableFields,
+                            $this->getRecursivePagelist($row['uid'], $maxlevels, ((int) $level + 1), $enableFields,
                                 $sysLanguageUid);
                         }
                     }
