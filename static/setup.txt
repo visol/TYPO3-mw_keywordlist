@@ -60,4 +60,5 @@ plugin.tx_mwkeywordlist_pi1 {
 }
 
 # Include javascript for the keyword list
-page.includeJS.mw_keywordlist = EXT:mw_keywordlist/res/js/tx_mwkeywordlist.js
+page.includeJS.mw_keywordlist = EXT:mw_keywordlist/Resources/Public/JavaScript/tx_mwkeywordlist.js
+
