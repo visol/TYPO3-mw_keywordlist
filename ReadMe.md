@@ -6,5 +6,5 @@ For details see the manual at [https://docs.typo3.org/typo3cms/extensions](https
 
 ## NOTE
 
-This upgrade for TYPO3 8.7 compatibility is to be considered as untested und works for my clients purposes.
+This upgrade for TYPO3 8.7 compatibility is to be considered as untested and works for my clients purposes.
 No further tests conducted.
