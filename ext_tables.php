@@ -28,7 +28,7 @@ $extensionMamagementUtility::addPlugin(
         'LLL:EXT:mw_keywordlist/locallang_db.xml:tt_content.menu_type_pi1',
         $_EXTKEY . '_pi1'
     ),
-    'menu_type'
+    'CType'
 );
 
 // Add checkbox to menu palette.

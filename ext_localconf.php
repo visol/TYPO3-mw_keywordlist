@@ -31,7 +31,7 @@ else {
         $_EXTKEY,
         'Classes/ListView.php',
         '_pi1',
-        'menu_type',
+        'CType',
         1
     );
 
