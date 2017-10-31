@@ -1,5 +1,5 @@
 {
-  "name": "mehrwert/ext-mw_keywordlist",
+  "name": "visol/ext-mw_keywordlist",
   "type": "typo3-cms-extension",
   "description": "This extension adds a new CType for an A-Z index with Links to the related pages.",
   "keywords": [
