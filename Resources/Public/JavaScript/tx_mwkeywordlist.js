@@ -18,7 +18,7 @@ var TxMwKeywordList = {
 	init: function() {
 		$('.tx-mwkeywordlist-pi1').each(function(index, element) {
 				// Hide all sections except the first one
-			TxMwKeywordList.showLetterContent($(element).find('.tx-mwkeywordlist-pi1-content A[name]:first'));
+			//TxMwKeywordList.showLetterContent($(element).find('.tx-mwkeywordlist-pi1-content A[name]:first'));
 				// Add click action to jump menu links
 			$(element).find('.tx-mwkeywordlist-pi1-jumpmenu A').bind({
 				click: function() {
@@ -26,6 +26,13 @@ var TxMwKeywordList = {
 					return false;
 				}
 			});
+		});
+		$('.tx-mwkeywordlist-pi1 .atoz').bind({
+			click: function () {
+				console.log('a-z');
+                TxMwKeywordList.showLetterContent('a-z');
+                return false;
+            }
 		});
 	},
 
@@ -36,6 +43,15 @@ var TxMwKeywordList = {
 	 * @param element The A-Tag element whose siblings should be shown
 	 */
 	showLetterContent: function(element) {
+		if(element == 'a-z') {
+            $('.tx-mwkeywordlist-pi1 .tx-mwkeywordlist-pi1-content').find('A[name]').each(function(index, element) {
+                var item = $(element);
+                item.fadeIn();
+                    item.nextUntil('A[name]').fadeIn();
+                }
+            )
+			return true;
+		}
 		$(element).parents('.tx-mwkeywordlist-pi1 .tx-mwkeywordlist-pi1-content').find('A[name]').each(function(index, item) {
 				// If current id does not match the required id,
 				// hide the item an all of its siblings (up to the next link)

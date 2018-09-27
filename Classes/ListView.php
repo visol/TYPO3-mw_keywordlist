@@ -558,14 +558,10 @@ class tx_mwkeywordlist_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
         // Jump menu
         $jumpMenu = array();
 
-        // Special treatment for special chars and data
-        if (in_array('0-9', $this->existingKeys)) {
-            $jumpMenu['0-9'] = '<a' . $this->pi_classParam('activeLink') . ' href="' .
-                $this->pi_getPageLink($GLOBALS['TSFE']->id, '',
-                    '') . '#general' . $this->elUid . '" rel="general">0-9</a>';
-        } else {
-            $jumpMenu['0-9'] = '<span' . $this->pi_classParam('inactiveLink') . '>0-9</span>';
-        }
+        #$jumpMenu['all'] = '<span' . $this->pi_classParam('atoz') . '>A-Z</span>';
+        $jumpMenu['a-z'] = '<a' . $this->pi_classParam('activeLink atoz') . ' href="' .
+            $this->pi_getPageLink($GLOBALS['TSFE']->id, '', '') . '#a-z' .
+            $this->elUid . '" rel="a-z">a-z</a>';
 
         // Loop through all chars and fill the jump menu array
         foreach ($this->jumpMenuIndexKeys AS $jumpMenuIndexKey) {
@@ -577,6 +573,15 @@ class tx_mwkeywordlist_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
             } else {
                 $jumpMenu[] = '<span' . $this->pi_classParam('inactiveLink') . '>' . $jumpMenuIndexKey . '</span>';
             }
+        }
+
+        // Special treatment for special chars and data
+        if (in_array('0-9', $this->existingKeys)) {
+            $jumpMenu['0-9'] = '<a' . $this->pi_classParam('activeLink') . ' href="' .
+                $this->pi_getPageLink($GLOBALS['TSFE']->id, '',
+                    '') . '#general' . $this->elUid . '" rel="general">0-9</a>';
+        } else {
+            $jumpMenu['0-9'] = '<span' . $this->pi_classParam('inactiveLink') . '>0-9</span>';
         }
 
         // Set 0-9 index to last position if enabled in backend
