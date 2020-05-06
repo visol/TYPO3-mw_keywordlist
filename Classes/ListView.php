@@ -380,7 +380,7 @@ class tx_mwkeywordlist_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
             reset($this->pages);
 
             // loop through all selected pages
-            while (list($uid, $pagesRow) = each($this->pages)) {
+            foreach($this->pages as $uid => $pagesRow) {
                 $keywords = preg_split('/[\s]*,[\s]*/', $pagesRow['keywords'], -1, PREG_SPLIT_NO_EMPTY);
                 if (sizeof($keywords) > 0) {
                     foreach ($keywords AS $keyword) {
