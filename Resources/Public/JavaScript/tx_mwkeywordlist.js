@@ -17,22 +17,23 @@ var TxMwKeywordList = {
 	 */
 	init: function() {
 		$('.tx-mwkeywordlist-pi1').each(function(index, element) {
-				// Hide all sections except the first one
+			// Hide all sections except the first one
 			//TxMwKeywordList.showLetterContent($(element).find('.tx-mwkeywordlist-pi1-content A[name]:first'));
-				// Add click action to jump menu links
+			// Add click action to jump menu links
 			$(element).find('.tx-mwkeywordlist-pi1-jumpmenu A').bind({
-				click: function() {
+				click: function(e) {
+					e.preventDefault();
 					TxMwKeywordList.showLetterContent($(element).find('A[name='+this.rel+']'));
 					return false;
 				}
 			});
 		});
 		$('.tx-mwkeywordlist-pi1 .atoz').bind({
-			click: function () {
-				console.log('a-z');
-                TxMwKeywordList.showLetterContent('a-z');
-                return false;
-            }
+			click: function (e) {
+				e.preventDefault();
+				TxMwKeywordList.showLetterContent('a-z');
+				return false;
+			}
 		});
 	},
 
